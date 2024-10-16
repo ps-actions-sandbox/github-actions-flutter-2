@@ -2,10 +2,21 @@ name: My first Workflow
 
 on: [workflow_dispatch]
 
+env: 
+  MY_GLOBAL_VAR: Test
+
 jobs:
-  demo:
+  demo-1:
     runs-on: ubuntu-latest
     name: My first Job
+    env:
+      MY_SCOPED_VAR: scoped
+    steps:
+      - run: echo "Hello Flutter 👋"
+      - run: echo "${{ env.MY_GLOBAL_VAR }}"
+  demo-2:
+    runs-on: ubuntu-latest
+    name: My second Job
     steps:
       - run: echo "Hello Flutter 👋"
      
